@@ -548,7 +548,7 @@
   \else 
     \gdef\@doctorsdegree{#1}}
 \newcommand{\@mastersdegree}{MASTER OF SCIENCE IN METEOROLOGY} %in metr added LMK 9 May 2007
-\newcommand{\@doctorsdegree}{Doctor of Philosophy}
+\newcommand{\@doctorsdegree}{DOCTOR OF PHILOSOPHY}
 
 \newcommand{\majorfield}[1]{%
   \gdef\@majorfield{#1}%
@@ -666,26 +666,27 @@
 	  \fi
 	  
 %      {{By}\\*[5.0 true cm]% %changed 1 to 5 LMK 2 May 2007
-      {{By}\\*[2.0 true cm]% %changed  5 to 3 BHF 25 November 2007
+      {{By}\\*[0.5 true in]% % 2.0 cm to 0.5 inches to fit 6 members - BVR
           \par}
     \end{center}%
-%%%Brian
+%%% Ben Root - Nov. 29, 2011
+%%% Committee member names must be right-aligned
 \noindent
 \hspace*{3in}\hrulefill
 \vskip .0in
-\hspace*{3in}\@memberone
+{}\hfill\@memberone
 \vskip .5in
 %
 \noindent
 \hspace*{3in}\hrulefill
 \vskip .0in
-\hspace*{3in}\@membertwo 
+{}\hfill\@membertwo 
 \vskip .5in
 %
 \noindent
 \hspace*{3in}\hrulefill
 \vskip .0in
-\hspace*{3in}\@memberthree 
+{}\hfill\@memberthree 
 \vskip .5in
 %
 \if@thesis
@@ -694,19 +695,19 @@
 \noindent
 \hspace*{3in}\hrulefill
 \vskip .0in
-\hspace*{3in}\@memberfour 
+{}\hfill\@memberfour 
 \vskip .5in
 %
 \noindent
 \hspace*{3in}\hrulefill
 \vskip .0in
-\hspace*{3in}\@memberfive 
+{}\hfill\@memberfive 
 \vskip .5in
 %uncomment the following 4 lines if you have 6 members
 %\noindent
 %\hspace*{3in}\hrulefill
 %\vskip .0in
-%\hspace*{3in}\@membersix 
+%{}\hfill\@membersix 
 %
 \fi
 
@@ -939,13 +940,19 @@
 \setcounter{tocdepth}{3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\renewcommand{\bibliographystyle}[1]{%
-  \@latexerr{\string\bibliographystyle\space is undefined.
-             Use \string\references{#1}{bibfile list}}\@eha}
-\renewcommand{\bibliography}[1]{%
-  \@latexerr{\string\bibliography\space is undefined.
-             Use \string\references{bibstyle}{#1}}\@eha}
+%%% BVR - 29 Nov 2011
+%%% Re-enabled the use of \bibliography and \bibliographystyle.
+%%% I can see no apparent difference between using the standard
+%%% macros and the ad-hoc "\references". Plus, various LaTeX tools
+%%% expect to find \bibliography and will fail to auto-load the
+%%% bibtex file because it is not specified by \bibliograpby
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\bibliographystyle}[1]{%
+%  \@latexerr{\string\bibliographystyle\space is undefined.
+%             Use \string\references{#1}{bibfile list}}\@eha}
+%\renewcommand{\bibliography}[1]{%
+%  \@latexerr{\string\bibliography\space is undefined.
+%             Use \string\references{bibstyle}{#1}}\@eha}
 
 \newcommand{\references}{%
 \OUsinglespace
