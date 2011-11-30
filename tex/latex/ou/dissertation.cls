@@ -492,7 +492,11 @@
 
 \renewcommand{\title}[2][\@empty]{%
   \gdef\@volume{#1}%
-  \gdef\@title{#2}}
+  \gdef\@title{#2}%
+  %%% BVR - 11/30/2011 - Adding a platform-independent way to force
+  %%%       capitalization of the title in the signature page. See
+  %%%       note in signature page command for details.
+  \gdef\@captitle{\uppercase{#2}}}
 
 
 \newcommand{\thesisinput}[1]{%
@@ -647,7 +651,14 @@
     \vskip 60.0 true pt%
     \begin{center}
       %%% {\bf \LARGE \@title \par} %obsolete April 19, 2007
-      {\@title \par} %remains single space here (but double space on title page)
+      %%% BVR - The title on the signature page *must* always be in caps.
+      %%%       Usually, using \MakeUppercase would work here (and does
+      %%%       seem to work using LaTeX on Macs) but it causes strange
+      %%%       errors on Linux LaTeX environments (Fedora 15, 11/30/2011).
+      %%%       Therefore, I suggest a new gdef "captitle" to hold a
+      %%%       uppercase version of the "title" gdef, and this seems to
+      %%%       work everywhere.
+      {\@captitle \par} %remains single space here (but double space on title page)
       \ifx\@volume\@empty\else
         \vskip 3em%
         \@volume
